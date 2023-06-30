@@ -15,12 +15,29 @@ function Home() {
 
   const [refreshList, setRefreshList] = useState();
 
+  const [searchText, setSearchText] = useState("");
+
+  const [filteredList, setFilteredList] = useState([])
+
   useEffect(() => {
     if (!getToken()) {
       navigation("/login");
     }
     fetchTodoList();
   }, [navigation, refreshList]);
+
+  useEffect(() => {
+
+    if(searchText==='')
+    {
+      setFilteredList(list)
+    }
+    else{
+      const filterlist=list.filter(todo=>todo.desc.toLowerCase().includes(searchText.toLowerCase().trim()))
+      setFilteredList(filterlist)
+    }
+  }, [list,searchText])
+  
 
   async function fetchTodoList() {
     const result = await getTodoListApi();
@@ -33,13 +50,21 @@ function Home() {
 
   return (
     <div>
-      <Header />
+      <Header searchText={searchText} setSearchText={setSearchText} />
       <ToastContainer />
       <div className="container">
         <div className="row justify-content-md-center mt-4">
-          {list.map((todo) => (
-            <Todo todo={todo} key={todo._id} />
+          {filteredList.map((todo) => (
+            <Todo todo={todo} key={todo._id} setRefreshList={setRefreshList} />
           ))}
+
+          {
+            filteredList.length===0 && <div className="NotFoundTodos">
+              No Todos Available  .
+            </div>
+          }
+
+
         </div>
       </div>
 

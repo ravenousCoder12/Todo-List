@@ -81,7 +81,7 @@ function Login() {
               />
 
               {errors?.username && (
-                <small id="emailHelp" className="form-text text-muted">
+                <small id="emailHelp" className="form-text text-danger">
                   {errors.username.msg}
                 </small>
               )}
@@ -102,7 +102,7 @@ function Login() {
               />
 
               {errors?.password && (
-                <small id="emailHelp" className="form-text text-muted">
+                <small id="emailHelp" className="form-text text-danger">
                   {errors.password.msg}
                 </small>
               )}

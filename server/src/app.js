@@ -19,7 +19,7 @@ mongoose
     console.error("Error connecting to MongoDB:", error);
   });
 
-const PORT = 3007;
+const PORT = 3009;
 
 app.use(cors());
 

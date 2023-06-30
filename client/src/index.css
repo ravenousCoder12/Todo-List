@@ -11,3 +11,34 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.card-body{
+  height: 40%;
+  overflow: auto;
+}
+.card-title{
+  font-size: 130%;
+  font-family:  'Montserrat', sans-serif;
+  /* textDecoration: todo.isCompleted ? 'line through' : 'none' */
+  text-decoration: none;
+  
+}
+.card-title.completed {
+  text-decoration: line-through;
+}
+
+.actionButtons{
+  position: absolute;
+  bottom: 1%;
+  left: 1%;
+  right: 1%;
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+.cont{
+  height:300px;
+  width:300px;
+}
+
